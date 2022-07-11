@@ -85,4 +85,17 @@ p1.__setitem__(0,5)
 print(p1[0])
 print(p1)
 
+p1[1] = 10
+print(p1[1])
+print(p1)
 
+print(p1)
+
+print(p1.__len__())
+print(len(p1))
+
+print(p1.__str__())
+print(str(p1))
+
+p10 = Point(5,6)
+print(p10)
