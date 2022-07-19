@@ -1,7 +1,3 @@
 # Default ignored files
 /shelf/
 /workspace.xml
-
-# data 파일
-PythonEx/ch05_data/data/
-PythonEx/ch06_통계량/data/
