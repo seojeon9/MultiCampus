@@ -4,7 +4,18 @@
 <meta charset="UTF-8">
 <title>동적 선택자</title>
 	<style type="text/css">
-
+		.content div {
+			display: inline-block;
+			background-color: blue;
+			width: 100px;
+			height: 50px;
+		}
+		.content div:hover { /*<div>에 마우스를 올릴때*/
+			background-color: yellow;
+		}
+		.content div:active { /*<div>를 클릭할때*/
+			background-color: red;
+		}
 	</style>
 </head>
 <body>
