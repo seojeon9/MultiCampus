@@ -11,4 +11,6 @@ crawl_data/
 *.xlsx
 *.xls
 *.npy
+*.pptx
+*.ppt
 
