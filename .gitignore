@@ -2,6 +2,7 @@
 PythonEx/ch05_data/data/
 PythonEx/ch06_통계량/data/
 data/
+PythonEx/ch07_웹data수집/driver/
 
 # data파일 track금지
 *.csv 
