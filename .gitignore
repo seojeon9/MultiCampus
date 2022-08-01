@@ -14,3 +14,6 @@ crawl_data/
 *.pptx
 *.ppt
 
+# image파일 track금지
+*.png
+*.jpg

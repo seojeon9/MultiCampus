@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table 태그</title>
+    <style>
+        td {width: 100px;}
+    </style>
+</head>
+<body>
+    <table border="1">
+        <caption>테이블1</caption>
+        <thead align="center"> <!--의미적으로 thead인 것이지 보이는게 달라지지는 않는다-->
+            <tr><th>a</th><th>b</th><th>c</th><th>d</th></tr>
+        </thead>
+        <tbody>
+            <tr><td rowspan="3">a1</td><td>b1</td><td>c1</td><td rowspan="2">d1</td></tr>
+            <tr><td>a2</td><td>b2</td><td>c2</td></tr>
+            <tr><td>a3</td><td>b3</td><td>c3</td><td>d3</td></tr>
+            <tr><td>a4</td><td>b4</td><td>c4</td><td>d4</td></tr>
+        </tbody>
+    </table>
+    <br><br>
+    <table border="1">
+        <caption>테이블2</caption>
+        <thead align="center"> 
+            <tr><th>a</th><th>b</th><th>c</th><th>d</th></tr>
+        </thead>
+        <tbody>
+            <tr><td colspan="2">a1</td><td>c1</td><td>d1</td></tr>
+            <tr><td>a2</td><td>b2</td><td>c2</td><td>d2</td></tr>
+            <tr><td>a3</td><td>b3</td><td rowspan="2" colspan="2">c3</td></tr>
+            <tr><td>a4</td><td>b4</td></tr>
+        </tbody>
+        <tfoot align="center">
+            <tr><td colspan="4">a5</td></tr>
+        </tfoot>
+    </table>
+    <br><br>
+    <table border="1">
+        <caption>테이블3</caption>
+        <thead align="center">
+          <tr><th>a</th><th>b</th><th>c</th><th>d</th></tr>
+        </thead>
+        <tbody align="center">
+          <tr><td rowspan="4">a1</td><td colspan="3">b1</td></tr>
+          <tr><td>b2</td><td>c2</td><td>d2</td></tr>
+          <tr><td rowspan="2">b3</td><td>c3</td><td rowspan="2">d3</td></tr>
+          <tr><td>c4</td></tr>
+        </tbody>
+      </table>
+    
+</body>
+</html>
