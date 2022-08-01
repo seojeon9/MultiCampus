@@ -4,15 +4,25 @@
 <meta charset="UTF-8">
 <title>Position 속성</title>
     <style type="text/css"> 	
-        #parent {
-            /*position이 없을때는 static*/
-            /* position: relative; */
+        * {margin: 0;} /**은 문서내 모든 태그 - 문서내 모든 태그의 margin으로 설정 */
+        /* #parent {
             position: absolute;
+            top: 0px;
+            left: 0px;
             width: 200px;
             height: 300px;
             border: solid 5px #000000;
-            margin: 50px 0 0 50px;
-        }
+        } /* 윗쪽 왼쪽 마진 0을 설정 */
+
+        #parent {
+            position: relative; /*문서의 기본 여백을 남겨둠*/
+            top: 0px;
+            left: 0px;
+            width: 200px;
+            height: 300px;
+            border: solid 5px #000000;
+        } 
+
         #boxA, #boxB, #boxC {
             width: 80px;
             height: 80px;

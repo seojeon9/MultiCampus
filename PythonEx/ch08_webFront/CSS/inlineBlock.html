@@ -4,7 +4,16 @@
 <meta charset="UTF-8">
 <title>inlineBlock 예제</title>
 	<style type="text/css"> 
-
+        .greenBox {
+            /* display: block; /* div 태그기 때문에 기본 display는 block */
+            /* display: inline; /* inline은 내부 컨텐츠의 크기 만큼만 영역을 설정, width와 height 속성은 반영되지 않는다 */
+            /* display: inline-block; /* 옆으로 나란히 배치/ 내부 영역의 여백도 있음*/
+            float: right;
+            width: 150px;
+            height: 75px;
+            margin: 10px;
+            border: solid 3px #73AD21;
+        }
 	</style>
 </head>
 <body>
