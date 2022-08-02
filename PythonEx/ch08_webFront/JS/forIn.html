@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+        <title>for in 예제</title>
+        <script type="text/javascript">    		    
+			var fruits = ["사과", "포도", "복숭아"];	//배열 선언 및 초기화		
+			//배열이나 객체를 쉽게 탐색 : for in 문
+            /*
+            for (var 변수 in 배열){
+                num = arr[i];   //배열객체 탐색코드
+            } 
+            */
+            for(var i in fruits){ //인덱스가 i에 대입
+                document.write("fruits["+ i+ "] = " + fruits[i] + "<br>");
+            }
+        </script>        
+    </head>   
+    <body>   	  
+    </body>
+</html>
+	
