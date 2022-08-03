@@ -7,16 +7,21 @@
 			window.onload = function() {
 				//1단계: 요소 노드 생성
 				// 요소 노드(<img> 태그) 생성하고 변수에 지정 
+				var img = document.createElement('img');
+				//속성 설정 - img 태그는 내부text가 없는 단일태그, 속성을 설정해야 함 src= 필수 속성
+				img.src = 'image/bird.jpg';
+				img.width = 250;
+				img.height = 180;
+				img.title = '예쁜새'
 
-				//속성 설정
-
-	
 				//2단계 : 문서에 출력
-
+				document.body.appendChild(img);
         	};
 		</script>
 	</head>
 	
 	<body>
+		<h3>이미지 표현</h3>
+		<img width="200" height="300" src="image/bomb.png">
 	</body>
 </html>

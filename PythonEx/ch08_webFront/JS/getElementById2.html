@@ -10,12 +10,17 @@
         
 			//실행 시 해당 id의 요소 반환
 			window.onload = function() {
-
+				imageA = document.getElementById('imageA'); // img 태그 포인터
+				hint = document.getElementById('hint'); // id속성값이 hint인 div 태그 포인터
+				changeButton = document.getElementById('changeButton'); //button 태그 포인터
 			};
 			
 			//요소의 속성 변환	
 			function change(){ 		
-
+				imageA.src = 'image/B.png'; //이미지 변경
+				hint.innerHTML = "새로운 이미지로 변경되었습니다.";
+				hint.style.background = "red"
+				changeButton.innerHTML = "완료"
             }    		
 		</script>
 	</head>	

@@ -5,11 +5,18 @@
         <title>window.open()2</title>
 		<script type="text/javascript">		
 			//이미 만들어진 문서를 새로운 창으로 열기
-
+			function openWindow() {
+				window.open("windowOpen.html","bigImg","width=200,height=200,"
+							+ "status=yes,resizable=yes");
+			}
 			
 			//새로운 창 만들어서 열기
 			//문자열과 버튼 출력 / 버튼 클릭 시 창 닫기
-
+			function openNewWindow() {
+				createWin = window.open("","createwin","width=400,height=150");
+				createWin.document.write("createWin 이름으로 새로 만든 창입니다.")
+				createWin.document.write("<p><button onClick='window.close()'>닫기</button>")
+			}
 		</script>
 	</head>		
 	<body>    	

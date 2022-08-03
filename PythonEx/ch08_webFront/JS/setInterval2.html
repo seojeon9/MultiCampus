@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval2</title>
+    <script type="text/javascript">
+        //1초에 한번씩 이미지를 출력하되 총 10개의 이미지가 출력
+        var count=0; //10개 출력되었는지 확인하는 함수
+
+        function start() {
+            alert("이미지 10개 출력");
+            timerID = setInterval('showImage()',1000);
+        }
+
+        function showImage() { //이미지를 브라우조 doc에 추가하는 함수
+            count++; // 이미지 추가 전 카운트 증가
+
+            if(count % 2 == 1)
+                document.body.innerHTML += "<img src='image/apple.png'>"
+            else
+                document.body.innerHTML += "<img src='image/bomb.png'>"
+
+            if(count==10) {
+                clearInterval(timerID)
+            }
+        }
+    </script>
+</head>
+<body onLoad="start()">
+    
+</body>
+</html>
