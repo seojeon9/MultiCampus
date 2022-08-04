@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dunamicEvent</title>
+    <script src="jquery-3.5.1.min.js"></script>
+	<script type="text/javascript">
+        $(document).ready(function(){
+            //createBtn 클랙했을 때
+            $('#createBtn').on('click',function(){
+                $(this).after("<p><input type='button' id='newBtn1' value='새버튼1'>" +
+                              "<p><input type='button' id='newBtn2' value='새버튼2'>")
+                //새버튼1 click 이벤트 연결
+                $('#newBtn1').on('click',function(){
+                    alert('[새버튼 1] 클릭');
+                });
+                //새버튼 2 click 이벤트 연결 - 동적연결 이벤트 처리방식 (공식. 얘를 픽하라고 되어있음)
+                $(document).on('click','#newBtn2',function(){
+                    alert('[새버튼 2] 클릭');
+                });
+                //.click바로 하는건 동적연결은 지원되지 않음
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="'button" id="createBtn" value="새 버튼 만들기">
+</body>
+</html>

@@ -3,8 +3,22 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>text()/html()</title>
-		<script src="../jquery-3.5.1.min.js"></script>
+		<script src="jquery-3.5.1.min.js"></script>
 		<script type="text/javascript">
+			$(document).ready(function(){
+				//1.text() : <div>태그 내의 문자열만 반환
+				var aText = $('#a').text();
+				alert("text : " + aText);
+
+				//2.html() : <div>태그내의 문자열을 반환(태그 포함 반환)
+				var bText = $('#b').html();
+				alert("html : " + bText);
+
+				//3. 설정 : 태그인식 하지 않고 문자열로 취급
+				$('#a').text("<h1>jQuery</h1>")
+				//4. 설정 : 태그 인식해서 해석 후 결과를 출력
+				$('#b').html("<h1>jQuery</h1>")
+			});
 
 		</script>
 	</head>
