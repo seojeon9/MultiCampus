@@ -28,7 +28,7 @@
 #tabMenu img:hover {cursor: pointer;}
 
 /* 탭 선택 표시 : js파일에서 addClass()에서 사용하기 위한 클래스 선택자 css 생성 */
-.selecctedItem img {margin-top: -30px;}
+.selectedItem img {margin-top: -30px;}
 
 /* ********************Tab Content ********************* */
 #tabContent {
