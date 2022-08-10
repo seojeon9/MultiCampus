@@ -1,6 +1,42 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
+from .models import Question
+from django.utils import timezone
+from .forms import QuestionForm
 
 # Create your views here.
 def index(request) :
-    return HttpResponse('안녕하세요 combot입니다')
+    question_list = Question.objects.order_by('-create_date') # -:내림차순
+    context = {'question_list':question_list}
+    return render(request,'combot/question_list.html',context)
+    # return HttpResponse('안녕하세요 combot입니다')
+
+def detail(request,question_id) :
+    # question = Question.objects.get(id=question_id) # 오류 발생시 db 오류 발생 : DB에서 오류가 나서 구조정보가 보여지게 되면 DB취약점이고 해킹의 표적이 될 수 있음
+    question = get_object_or_404(Question, pk=question_id) # 오류 발생시 404 오류 발생 : 보안적인 측면에서 더 유리함
+    context = {'question':question}
+    return render(request,'combot/question_detail.html',context)
+
+def answer_create(request, question_id) :
+    # answer에 저장할 question 객체 생성
+    # question은 answer의 ForeignKey로 연결되어 있음
+    question = get_object_or_404(Question, pk=question_id)
+    question.answer_set.create(content=request.POST.get('content'),create_date= timezone.now())
+    return redirect('combot:detail', question_id)
+
+# 장고 폰 기능 사용 연습
+def question_create(request) :
+    # 요청이 POST방식으로 들어오면 사용자가 전송한 값을 db에 저장 후 list 화면으로 redirect
+    if request.method == 'POST' :
+        # form 객체 생성
+        form = QuestionForm(request.POST)
+        if form.is_valid() : # 위에서 생성한 request data 담고 있는 폼객체가 정상인지 확인
+            question = form.save(commit=False) # 바로 세이브 하지말고 준비상태로 잠시 기다려라
+            question.create_date = timezone.now()
+            question.save()
+            return redirect('/combot')
+    else :
+        # 요청이 GET 방식으로 들어오며 질문 입력 FORM을 클라이언트에게 전달
+        # 질문 등록 Form 작성 코드
+        form = QuestionForm()  # 사용자 정의 Form class 명
+    return render(request, 'combot/question_form.html', {'form':form})
