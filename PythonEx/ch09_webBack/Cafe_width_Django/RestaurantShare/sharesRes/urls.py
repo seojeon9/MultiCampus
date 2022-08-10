@@ -7,7 +7,9 @@ urlpatterns = [
     #http://127.0.0.1:8000의 요청에 대한 처리
     path('',views.index, name='index'),
 
-    # http://127.0.0.1:8000/restaurantDetail/
+    # http://127.0.0.1:8000/restaurantDetail/delete
+    path('restaurantDetail/delete', views.restaurantDelete, name='resDelete'),
+    # http://127.0.0.1:8000/restaurantDetail/1
     path('restaurantDetail/<str:res_id>', views.restaurantDetail, name='resDetailPage'),
     # http://127.0.0.1:8000/restaurantDetail/updatePage/update
     path('restaurantDetail/updatePage/update', views.Update_restaurant, name='resUpdate'),

@@ -91,4 +91,41 @@ def restaurantUpdate(request,res_id) :
     return render(request,'sharesRes/restaurantUpdate.html', content)
 
 def Update_restaurant(request) :
-    return HttpResponse('맛집 수정')
+    # 클라이언트가 전송한 맛집 수정 값 추출
+    res_id = request.POST['resId']
+    cng_cte_id = request.POST['resCategory']    # ForeignKey로 되어 있어 id를 저장하는 것이 아니라 객체를 저장해줘야함
+    cng_category = Category.objects.get(id=cng_cte_id)
+    cng_name = request.POST['resTitle']
+    cng_link = request.POST['resLink']
+    cng_content = request.POST['resContent']
+    cng_keyword = request.POST['resLoc']
+    # 수정한 대상인 맛집의 테이블내 행(레코드) 접근 객체 생성
+    b_rest = Restaurant.objects.get(id=res_id)
+    # 접근 객체의 각 컬럼에 수정한 내용 대입
+    b_rest.category = cng_category
+    b_rest.restaurant_name = cng_name
+    b_rest.restaurant_link = cng_link
+    b_rest.restaurant_content = cng_content
+    b_rest.restaurant_keyword = cng_keyword
+    # 테이블에 변경내용 저장
+    b_rest.save()
+    # resDetailPage Url은 args가 설정되어 있으므로 해단 args를 같이 넘겨줘야 함 : kwargs={'res_id': res_id}
+    return HttpResponseRedirect(reverse('resDetailPage',kwargs={'res_id': res_id}))
+
+def restaurantDelete(request) :
+    # 삭제하려는 맛집 id 추출
+    res_id = request.POST['resId']
+    # 해당 id의 접근 객체 생성
+    del_rest = Restaurant.objects.get(id=res_id)
+    # 해당 맛집 삭제
+    del_rest.delete()
+
+    return HttpResponseRedirect(reverse('index'))
+
+
+
+
+
+
+
+
