@@ -1,11 +1,14 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
+
 
 def default_time():
     return timezone.now() + timezone.timedelta()
 
 # Create your models here.
 class Question(models.Model) :
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     subject = models.CharField(max_length=200)
     content = models.TextField()
     create_date = models.DateTimeField(default=default_time)
@@ -19,6 +22,7 @@ class Question(models.Model) :
 # 이 메서드의 기능은 ForeignKey로 연결된 클래스(table)에 레코드(행)저장을 가능하게 한다.
 
 class Answer(models.Model) :
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     content = models.TextField()
     create_date = models.DateTimeField()

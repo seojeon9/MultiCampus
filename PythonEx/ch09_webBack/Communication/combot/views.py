@@ -4,6 +4,7 @@ from .models import Question
 from django.utils import timezone
 from .forms import QuestionForm,AnswerForm
 from django.core.paginator import Paginator # 리스트(게시판등) 페이징 기능을 구현하는 함수
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request) :
@@ -27,6 +28,7 @@ def detail(request,question_id) :
     context = {'question':question}
     return render(request,'combot/question_detail.html',context)
 
+@login_required(login_url='accounts:login')
 def answer_create(request, question_id) :
     # answer에 저장할 question 객체 생성
     # question은 answer의 ForeignKey로 연결되어 있음
@@ -43,6 +45,7 @@ def answer_create(request, question_id) :
         if form.is_valid():
             # db에 data 저장
             answer = form.save(commit=False)  # form객체를 통해 전달된 데이터 db저장 준지
+            answer.author = request.user
             answer.create_date = timezone.now()
             answer.question = question
             answer.save()
@@ -56,6 +59,7 @@ def answer_create(request, question_id) :
 
 
 # 장고 폰 기능 사용 연습
+@login_required(login_url='accounts:login')
 def question_create(request) :
     # 요청이 POST방식으로 들어오면 사용자가 전송한 값을 db에 저장 후 list 화면으로 redirect
     if request.method == 'POST' :
@@ -63,6 +67,7 @@ def question_create(request) :
         form = QuestionForm(request.POST)
         if form.is_valid() : # 위에서 생성한 request data 담고 있는 폼객체가 정상인지 확인
             question = form.save(commit=False) # 바로 세이브 하지말고 준비상태로 잠시 기다려라
+            question.author = request.user # 추가한 author 속성에 로그인된 사용자 저장
             question.create_date = timezone.now()
             question.save()
             return redirect('/combot')
