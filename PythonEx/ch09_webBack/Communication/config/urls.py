@@ -21,5 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # http://localhost:8000/combot/
     # path('combot/',views.index)
-    path('combot/',include('combot.urls'))
+    path('',views.index,name='main'),
+    path('combot/',include('combot.urls'), name='combot'),
+    path('accounts/',include('accounts.urls'), name='accounts'),
 ]
