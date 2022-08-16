@@ -13,6 +13,7 @@ crawl_data/
 *.npy
 *.pptx
 *.ppt
+*.exe
 
 # image파일 track금지
 *.png
